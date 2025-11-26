@@ -45,4 +45,36 @@ public abstract class Piece {
                 .mapToObj(i -> Position.Coordinates.of(currentPosition.getRow()+i, currentPosition.getColumn()+i))
                 .collect(Collectors.toList());
     }
+
+    @NonNull
+    protected static List<Position.Coordinates> getTopVertical(@NonNull final Position.Coordinates currentPosition) {
+        return IntStream
+                .iterate(1, i -> currentPosition.getRow()-i >= 0, i -> i+1)
+                .mapToObj(i -> Position.Coordinates.of(currentPosition.getRow()-i, currentPosition.getColumn()))
+                .collect(Collectors.toList());
+    }
+
+    @NonNull
+    protected static List<Position.Coordinates> getBottomVertical(@NonNull final Position.Coordinates currentPosition) {
+        return IntStream
+                .iterate(1, i -> currentPosition.getRow()+i <= 7, i -> i+1)
+                .mapToObj(i -> Position.Coordinates.of(currentPosition.getRow()+i, currentPosition.getColumn()))
+                .collect(Collectors.toList());
+    }
+
+    @NonNull
+    protected static List<Position.Coordinates> getLeftHorizontal(@NonNull final Position.Coordinates currentPosition) {
+        return IntStream
+                .iterate(1, i -> currentPosition.getColumn()-i >= 0, i -> i+1)
+                .mapToObj(i -> Position.Coordinates.of(currentPosition.getRow(), currentPosition.getColumn()-i))
+                .collect(Collectors.toList());
+    }
+
+    @NonNull
+    protected static List<Position.Coordinates> getRightHorizontal(@NonNull final Position.Coordinates currentPosition) {
+        return IntStream
+                .iterate(1, i -> currentPosition.getColumn()+i <= 7, i -> i+1)
+                .mapToObj(i -> Position.Coordinates.of(currentPosition.getRow(), currentPosition.getColumn()+i))
+                .collect(Collectors.toList());
+    }
 }

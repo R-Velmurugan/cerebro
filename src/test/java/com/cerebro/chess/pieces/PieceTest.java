@@ -11,6 +11,7 @@ import java.util.stream.IntStream;
 
 class PieceTest {
 
+    @DisplayName("Should return all 4 diagonals")
     @Nested
     class DiagonalScenarios {
         @DisplayName("Should return all diagonals when piece is in center")
@@ -142,6 +143,61 @@ class PieceTest {
                 Assertions.assertEquals(6, actualBottomRightDiagonal.size());
                 Assertions.assertEquals(Position.Coordinates.of(7,6), actualBottomRightDiagonal.getLast());
             }
+        }
+    }
+
+    @DisplayName("Should return all 4 directions")
+    @Nested
+    class HorizontalScenarios {
+
+        @DisplayName("Should return all 4 directions when piece is in center")
+        @Test
+        void shouldReturnAll4DiagonalsWhenPieceIsInCenter() {
+            Position.Coordinates currentPosition = Position.Coordinates.of(4,4);
+            Assertions.assertEquals(4, Piece.getTopVertical(currentPosition).size());
+            Assertions.assertEquals(3, Piece.getBottomVertical(currentPosition).size());
+            Assertions.assertEquals(4, Piece.getLeftHorizontal(currentPosition).size());
+            Assertions.assertEquals(3, Piece.getRightHorizontal(currentPosition).size());
+        }
+
+        @DisplayName("Should return right and bottom when piece is in corner")
+        @Test
+        void shouldReturnRightAndBottomWhenPieceIsInTopLeftCorner() {
+            Position.Coordinates currentPosition = Position.Coordinates.of(0,0);
+            Assertions.assertEquals(0, Piece.getTopVertical(currentPosition).size());
+            Assertions.assertEquals(0, Piece.getLeftHorizontal(currentPosition).size());
+            Assertions.assertEquals(7, Piece.getRightHorizontal(currentPosition).size());
+            Assertions.assertEquals(7, Piece.getBottomVertical(currentPosition).size());
+        }
+
+        @DisplayName("Should return left and bottom when piece is in corner")
+        @Test
+        void shouldReturnLeftAndBottomWhenPieceIsInTopRightCorner() {
+            Position.Coordinates currentPosition = Position.Coordinates.of(0,7);
+            Assertions.assertEquals(0, Piece.getTopVertical(currentPosition).size());
+            Assertions.assertEquals(7, Piece.getLeftHorizontal(currentPosition).size());
+            Assertions.assertEquals(0, Piece.getRightHorizontal(currentPosition).size());
+            Assertions.assertEquals(7, Piece.getBottomVertical(currentPosition).size());
+        }
+
+        @DisplayName("Should return right and top when piece is in corner")
+        @Test
+        void shouldReturnRightAndTopWhenPieceIsInBottomLeftCorner() {
+            Position.Coordinates currentPosition = Position.Coordinates.of(7,0);
+            Assertions.assertEquals(7, Piece.getTopVertical(currentPosition).size());
+            Assertions.assertEquals(0, Piece.getLeftHorizontal(currentPosition).size());
+            Assertions.assertEquals(7, Piece.getRightHorizontal(currentPosition).size());
+            Assertions.assertEquals(0, Piece.getBottomVertical(currentPosition).size());
+        }
+
+        @DisplayName("Should return left and top when piece is in corner")
+        @Test
+        void shouldReturnLeftAndTopWhenPieceIsInBottomRightCorner() {
+            Position.Coordinates currentPosition = Position.Coordinates.of(7,7);
+            Assertions.assertEquals(7, Piece.getTopVertical(currentPosition).size());
+            Assertions.assertEquals(7, Piece.getLeftHorizontal(currentPosition).size());
+            Assertions.assertEquals(0, Piece.getRightHorizontal(currentPosition).size());
+            Assertions.assertEquals(0, Piece.getBottomVertical(currentPosition).size());
         }
     }
 }
