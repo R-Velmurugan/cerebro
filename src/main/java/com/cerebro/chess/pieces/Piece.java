@@ -12,7 +12,7 @@ public abstract class Piece {
     abstract Constants.Color getColor();
     abstract Constants.PieceType getType();
     abstract boolean moveIfPossible(Position.FenPosition from, Position.FenPosition to);
-    abstract List<Position.Coordinates> getPossibleMoves(Position.Coordinates from);
+    abstract List<Position.Coordinates> getPossibleMoves(Position.Coordinates currentPosition);
 
     @NonNull
     protected static List<Position.Coordinates> getTopLeftDiagonal(@NonNull final Position.Coordinates currentPosition) {

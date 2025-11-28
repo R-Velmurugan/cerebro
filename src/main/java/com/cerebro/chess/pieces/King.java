@@ -30,16 +30,16 @@ public class King extends Piece {
     }
 
     @Override
-    public List<Position.Coordinates> getPossibleMoves(@NonNull final Position.Coordinates from) {
+    public List<Position.Coordinates> getPossibleMoves(@NonNull final Position.Coordinates currentPosition) {
         List<Position.Coordinates> possibleMoves = new ArrayList<>();
-        populateKingMoves(Piece.getTopLeftDiagonal(from), possibleMoves);
-        populateKingMoves(Piece.getTopVertical(from), possibleMoves);
-        populateKingMoves(Piece.getTopRightDiagonal(from), possibleMoves);
-        populateKingMoves(Piece.getRightHorizontal(from), possibleMoves);
-        populateKingMoves(Piece.getBottomRightDiagonal(from), possibleMoves);
-        populateKingMoves(Piece.getBottomVertical(from), possibleMoves);
-        populateKingMoves(Piece.getBottomLeftDiagonal(from), possibleMoves);
-        populateKingMoves(Piece.getLeftHorizontal(from), possibleMoves);
+        populateKingMoves(Piece.getTopLeftDiagonal(currentPosition), possibleMoves);
+        populateKingMoves(Piece.getTopVertical(currentPosition), possibleMoves);
+        populateKingMoves(Piece.getTopRightDiagonal(currentPosition), possibleMoves);
+        populateKingMoves(Piece.getRightHorizontal(currentPosition), possibleMoves);
+        populateKingMoves(Piece.getBottomRightDiagonal(currentPosition), possibleMoves);
+        populateKingMoves(Piece.getBottomVertical(currentPosition), possibleMoves);
+        populateKingMoves(Piece.getBottomLeftDiagonal(currentPosition), possibleMoves);
+        populateKingMoves(Piece.getLeftHorizontal(currentPosition), possibleMoves);
         return possibleMoves;
     }
 
