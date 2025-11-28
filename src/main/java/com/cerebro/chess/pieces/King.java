@@ -2,14 +2,16 @@ package com.cerebro.chess.pieces;
 
 import com.cerebro.chess.model.Constants;
 import com.cerebro.chess.model.Position;
-import com.cerebro.chess.utils.BoardUtils;
+import org.springframework.lang.NonNull;
 
+import java.util.ArrayList;
 import java.util.List;
 
-public class King extends Piece{
+public class King extends Piece {
     private Constants.Race race;
+
     @Override
-    public Constants.Race getRace() {
+    public Constants.Race getColor() {
         return this.race;
     }
 
@@ -24,14 +26,22 @@ public class King extends Piece{
     }
 
     @Override
-    public List<Position.Coordinates> getPossibleMoves(Position.Coordinates from) {
-        return List.of(
-//                BoardUtils.getTopLeftDiagonalSquares(from).
-        );
+    public List<Position.Coordinates> getPossibleMoves(@NonNull final Position.Coordinates from) {
+        List<Position.Coordinates> possibleMoves = new ArrayList<>();
+        populateKingMoves(Piece.getTopLeftDiagonal(from), possibleMoves);
+        populateKingMoves(Piece.getTopVertical(from), possibleMoves);
+        populateKingMoves(Piece.getTopRightDiagonal(from), possibleMoves);
+        populateKingMoves(Piece.getRightHorizontal(from), possibleMoves);
+        populateKingMoves(Piece.getBottomRightDiagonal(from), possibleMoves);
+        populateKingMoves(Piece.getBottomVertical(from), possibleMoves);
+        populateKingMoves(Piece.getBottomLeftDiagonal(from), possibleMoves);
+        populateKingMoves(Piece.getLeftHorizontal(from), possibleMoves);
+        return possibleMoves;
     }
 
-    private static List<Position.Coordinates> getPossibleMovesForCorners(Position.Coordinates from){
-        return List.of();
+    private void populateKingMoves(@NonNull final List<Position.Coordinates> allSquares, @NonNull List<Position.Coordinates> kingPossibleMoves){
+        allSquares.stream()
+                .findFirst()
+                .ifPresent(kingPossibleMoves :: add);
     }
-
 }
