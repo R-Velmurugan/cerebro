@@ -8,13 +8,14 @@ import org.junit.jupiter.api.Test;
 
 import java.util.List;
 
-class QueenTest {
-    Piece queen = new Queen(Constants.Color.DARK);
+class BishopTest {
 
-    @DisplayName("Should return all possible moves for queen")
+    private final Piece bishop = new Bishop(Constants.Color.LIGHT);
+
+    @DisplayName("Should return all possible moves for bishop")
     @Test
     void shouldReturnAllPossibleMoves() {
-        List<Position.Coordinates> actual = queen.getPossibleMoves(Position.Coordinates.of(4,4));
-        Assertions.assertEquals(27, actual.size());
+        List<Position.Coordinates> possibleMoves = bishop.getPossibleMoves(Position.Coordinates.of(3, 3));
+        Assertions.assertEquals(13, possibleMoves.size());
     }
 }
