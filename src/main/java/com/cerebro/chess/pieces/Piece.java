@@ -9,7 +9,7 @@ import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
 public abstract class Piece {
-    abstract Constants.Race getColor();
+    abstract Constants.Color getColor();
     abstract Constants.PieceType getType();
     abstract boolean moveIfPossible(Position.FenPosition from, Position.FenPosition to);
     abstract List<Position.Coordinates> getPossibleMoves(Position.Coordinates from);

@@ -8,11 +8,15 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class King extends Piece {
-    private Constants.Race race;
+    private final Constants.Color color;
 
     @Override
-    public Constants.Race getColor() {
-        return this.race;
+    public Constants.Color getColor() {
+        return this.color;
+    }
+
+    public King(@NonNull final Constants.Color color) {
+        this.color = color;
     }
 
     @Override
