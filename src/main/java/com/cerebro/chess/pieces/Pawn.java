@@ -19,6 +19,19 @@ public class Pawn extends Piece {
         return color;
     }
 
+    private Position.Coordinates currentPosition;
+
+    @Override
+    Position.Coordinates getCoordinates() {
+        return this.currentPosition;
+    }
+
+    @Override
+    void setCoordinates(Position.Coordinates coordinates) {
+        this.currentPosition = coordinates;
+    }
+
+
     @Override
     Constants.PieceType getType() {
         return Constants.PieceType.PAWN;

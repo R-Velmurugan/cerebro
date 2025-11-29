@@ -14,9 +14,21 @@ public class Rook extends Piece {
         this.color = color;
     }
 
+    private Position.Coordinates currentPosition;
+
     @Override
-    Constants.Color getColor() {
-        return color;
+    public Constants.Color getColor() {
+        return this.color;
+    }
+
+    @Override
+    Position.Coordinates getCoordinates() {
+        return this.currentPosition;
+    }
+
+    @Override
+    void setCoordinates(Position.Coordinates coordinates) {
+        this.currentPosition = coordinates;
     }
 
     @Override

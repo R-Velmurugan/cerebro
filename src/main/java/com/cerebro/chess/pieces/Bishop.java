@@ -8,6 +8,7 @@ import java.util.List;
 
 public class Bishop extends Piece {
     private final Constants.Color bishopColor;
+    private Position.Coordinates currentPosition;
 
     public Bishop(Constants.Color bishopColor) {
         this.bishopColor = bishopColor;
@@ -16,6 +17,16 @@ public class Bishop extends Piece {
     @Override
     Constants.Color getColor() {
         return bishopColor;
+    }
+
+    @Override
+    Position.Coordinates getCoordinates() {
+        return this.currentPosition;
+    }
+
+    @Override
+    void setCoordinates(Position.Coordinates coordinates) {
+        this.currentPosition = coordinates;
     }
 
     @Override

@@ -9,6 +9,7 @@ import java.util.List;
 
 public class Queen extends Piece {
     private final Constants.Color color;
+    private Position.Coordinates currentPosition;
     public Queen(@NonNull final Constants.Color color) {
         this.color = color;
     }
@@ -17,6 +18,17 @@ public class Queen extends Piece {
     public Constants.Color getColor() {
         return this.color;
     }
+
+    @Override
+    Position.Coordinates getCoordinates() {
+        return this.currentPosition;
+    }
+
+    @Override
+    void setCoordinates(Position.Coordinates coordinates) {
+        this.currentPosition = coordinates;
+    }
+
 
     @Override
     public Constants.PieceType getType() {

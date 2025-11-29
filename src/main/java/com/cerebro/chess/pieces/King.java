@@ -9,10 +9,21 @@ import java.util.List;
 
 public class King extends Piece {
     private final Constants.Color color;
+    private Position.Coordinates currentPosition;
 
     @Override
     public Constants.Color getColor() {
         return this.color;
+    }
+
+    @Override
+    Position.Coordinates getCoordinates() {
+        return this.currentPosition;
+    }
+
+    @Override
+    void setCoordinates(Position.Coordinates coordinates) {
+        this.currentPosition = coordinates;
     }
 
     public King(@NonNull final Constants.Color color) {
