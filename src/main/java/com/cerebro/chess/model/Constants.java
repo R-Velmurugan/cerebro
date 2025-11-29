@@ -1,7 +1,7 @@
 package com.cerebro.chess.model;
 
 public class Constants {
-    public enum Race {
+    public enum Color {
         DARK, LIGHT
     }
     public enum PieceType {

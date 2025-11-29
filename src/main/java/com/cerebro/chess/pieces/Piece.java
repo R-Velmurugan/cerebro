@@ -5,14 +5,17 @@ import com.cerebro.chess.model.Position;
 import org.springframework.lang.NonNull;
 
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
 public abstract class Piece {
-    abstract Constants.Race getRace();
+    abstract Constants.Color getColor();
+    abstract Position.Coordinates getCoordinates();
+    abstract void setCoordinates(Position.Coordinates coordinates);
     abstract Constants.PieceType getType();
     abstract boolean moveIfPossible(Position.FenPosition from, Position.FenPosition to);
-    abstract List<Position.Coordinates> getPossibleMoves(Position.Coordinates from);
+    abstract List<Position.Coordinates> getPossibleMoves();
 
     @NonNull
     protected static List<Position.Coordinates> getTopLeftDiagonal(@NonNull final Position.Coordinates currentPosition) {
@@ -76,5 +79,16 @@ public abstract class Piece {
                 .iterate(1, i -> currentPosition.getColumn()+i <= 7, i -> i+1)
                 .mapToObj(i -> Position.Coordinates.of(currentPosition.getRow(), currentPosition.getColumn()+i))
                 .collect(Collectors.toList());
+    }
+
+    @NonNull
+    protected Optional<Position.Coordinates> getPosition(final int rowIncrements, final int columnIncrements ) {
+        final int finalRow = this.getCoordinates().getRow() + rowIncrements;
+        final int finalColumn = this.getCoordinates().getColumn() + columnIncrements;
+
+        if(finalRow < 0 || finalColumn < 0 || finalRow > 7 || finalColumn > 7) {
+            return Optional.empty();
+        }
+        return Optional.of(Position.Coordinates.of(finalRow, finalColumn));
     }
 }
