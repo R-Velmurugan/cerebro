@@ -41,7 +41,9 @@ public class Queen extends Piece {
     }
 
     @Override
-    public List<Position.Coordinates> getPossibleMoves(Position.Coordinates currentPosition) {
+    @NonNull
+    public List<Position.Coordinates> getPossibleMoves() {
+        Position.Coordinates currentPosition = this.getCoordinates();
         List<Position.Coordinates> possibleMoves = new ArrayList<>();
         possibleMoves.addAll(Piece.getTopLeftDiagonal(currentPosition));
         possibleMoves.addAll(Piece.getTopVertical(currentPosition));

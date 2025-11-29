@@ -2,6 +2,7 @@ package com.cerebro.chess.pieces;
 
 import com.cerebro.chess.model.Constants;
 import com.cerebro.chess.model.Position;
+import org.springframework.lang.NonNull;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -40,7 +41,9 @@ public class Bishop extends Piece {
     }
 
     @Override
-    List<Position.Coordinates> getPossibleMoves(Position.Coordinates currentPosition) {
+    @NonNull
+    List<Position.Coordinates> getPossibleMoves() {
+        Position.Coordinates currentPosition = this.getCoordinates();
         List<Position.Coordinates> possibleMoves = new ArrayList<>();
         possibleMoves.addAll(Piece.getTopLeftDiagonal(currentPosition));
         possibleMoves.addAll(Piece.getTopRightDiagonal(currentPosition));

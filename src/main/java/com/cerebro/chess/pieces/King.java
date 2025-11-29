@@ -41,7 +41,9 @@ public class King extends Piece {
     }
 
     @Override
-    public List<Position.Coordinates> getPossibleMoves(@NonNull final Position.Coordinates currentPosition) {
+    @NonNull
+    public List<Position.Coordinates> getPossibleMoves() {
+        final Position.Coordinates currentPosition = this.getCoordinates();
         List<Position.Coordinates> possibleMoves = new ArrayList<>();
         populateKingMoves(Piece.getTopLeftDiagonal(currentPosition), possibleMoves);
         populateKingMoves(Piece.getTopVertical(currentPosition), possibleMoves);

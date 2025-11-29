@@ -43,7 +43,8 @@ public class Rook extends Piece {
 
     @Override
     @NonNull
-    public List<Position.Coordinates> getPossibleMoves(Position.Coordinates currentPosition) {
+    public List<Position.Coordinates> getPossibleMoves() {
+        Position.Coordinates currentPosition = this.getCoordinates();
         List<Position.Coordinates> possibleMoves = new ArrayList<>();
         possibleMoves.addAll(Piece.getTopVertical(currentPosition));
         possibleMoves.addAll(Piece.getBottomVertical(currentPosition));

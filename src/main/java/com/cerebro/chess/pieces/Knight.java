@@ -43,7 +43,7 @@ public class Knight extends Piece {
 
     @Override
     @NonNull
-    public List<Position.Coordinates> getPossibleMoves(@NonNull final Position.Coordinates currentPosition) {
+    public List<Position.Coordinates> getPossibleMoves() {
         List<Position.Coordinates> possibleMoves = new ArrayList<>();
         this.getPosition(-2, -1).ifPresent(possibleMoves::add);
         this.getPosition(-1, -2).ifPresent(possibleMoves::add);

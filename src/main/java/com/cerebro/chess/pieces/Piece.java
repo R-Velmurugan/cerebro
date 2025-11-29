@@ -15,7 +15,7 @@ public abstract class Piece {
     abstract void setCoordinates(Position.Coordinates coordinates);
     abstract Constants.PieceType getType();
     abstract boolean moveIfPossible(Position.FenPosition from, Position.FenPosition to);
-    abstract List<Position.Coordinates> getPossibleMoves(Position.Coordinates currentPosition);
+    abstract List<Position.Coordinates> getPossibleMoves();
 
     @NonNull
     protected static List<Position.Coordinates> getTopLeftDiagonal(@NonNull final Position.Coordinates currentPosition) {
